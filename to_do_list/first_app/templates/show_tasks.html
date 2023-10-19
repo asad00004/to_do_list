@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block content %}
+<div style="width: 80%; margin: auto">
+    <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th scope="col">Title</th>
+            <th scope="col">Description</th>
+            <th scope="col">Status</th>
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for item in data %}
+            {% if item.is_completed == False %}
+            <tr>
+                <td>{{item.taskTitle}}</td>
+                <td>{{item.taskDescription}}</td>
+                <td>Incomplete</td>
+                <td><pre><a href="{% url "delete" id=item.id%}" class="btn btn-danger btn-sm">Delete</a>   <a href="{% url "edit" item.id%}" class="btn btn-warning btn-sm">Edit</a>   <a href="{% url "complete" id=item.id%}" class="btn btn-primary btn-sm">Complete</a></pre></td>
+            </tr>
+            {% endif %}
+          {% endfor %}
+        </tbody>
+      </table>
+</div>
+{% endblock content %}

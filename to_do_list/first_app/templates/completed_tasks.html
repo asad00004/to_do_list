@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block content %}
+<div style="width: 80%; margin: auto">
+    <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th scope="col">Title</th>
+            <th scope="col">Description</th>
+            <th scope="col">Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for item in data %}
+            {% if item.is_completed%}
+            <tr>
+                <td>{{item.taskTitle}}</td>
+                <td>{{item.taskDescription}}</td>
+                <td>Completed</td>
+            </tr>
+            {% endif %}
+          {% endfor %}
+        </tbody>
+      </table>
+</div>
+{% endblock content %}
